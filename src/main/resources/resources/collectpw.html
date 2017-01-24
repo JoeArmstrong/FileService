@@ -1,0 +1,26 @@
+<html>
+<body>
+<script>
+var getQueryString = function ( field, url ) {
+    var href = url ? url : window.location.href;
+    var reg = new RegExp( '[?&]' + field + '=([^&#]*)', 'i' );
+    var string = reg.exec(href);
+    return string ? string[1] : null;
+	};
+function getURL() {
+	var filename = getQueryString("filename");
+	return "https://54.203.116.194:8443/fileservice/file/" + filename + "/";
+	}
+window.onload = function() {
+	var theURL = getURL();
+	document.pwcollect.action = theURL;
+}
+</script>
+
+The file you have chosen to download requires a password<br>
+<form name=pwcollect method="get" >
+	Password: <input name="password" id="passwd" type="password" /><br><br>
+	<button name="submit" type="submit">Download File</button>
+</form>
+</body>
+</html>
